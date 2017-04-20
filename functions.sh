@@ -59,7 +59,7 @@ make_backup () {
     # compress the file
     gzip -9 $FILENAME-$DATETIME.sql
     # Send to cloud storage
-    /usr/local/bin/az storage blob upload -f $FILENAME-$DATETIME.sql.gz -c $CONTAINER -n $FILENAME-$DATETIME.sql.gz
+    /usr/local/bin/az storage blob upload -f $FILENAME-$DATETIME.sql.gz -c $CONTAINER -n $FILENAME-$DATETIME.sql.gz --account-key $AZURE_STORAGE_ACCESS_KEY --account-name $AZURE_STORAGE_ACCOUNT
 
     if  [ "$?" != "0" ]; then
         exit 1
