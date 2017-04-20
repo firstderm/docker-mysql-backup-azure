@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DATETIME=`date +"%Y-%m-%d_%H"`
+DATETIME=`date +"%Y-%m-%d_%H:%M:%S"`
 
 if [ "$MYSQL_PORT" == "" ]; then
     export MYSQL_PORT="3306";

@@ -26,8 +26,8 @@ else
     touch /var/log/cron.log;
     echo "$BACKUP_WINDOW /backup/variable.sh & /backup/functions.sh >> /var/log/cron.log 2>&1" >> job;
     echo "" >> job
-    crontab job; crond;
-    tail -f /var/log/cron.log;
+    crontab job; crond -l 2 -f;
+    #tail -f /var/log/cron.log;
     exit $?
 
 fi
