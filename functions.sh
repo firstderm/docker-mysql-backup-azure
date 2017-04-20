@@ -59,7 +59,7 @@ make_backup () {
     # compress the file
     gzip -9 $FILENAME-$DATETIME.sql
     # Send to cloud storage
-    /usr/local/bin/azure storage blob upload $FILENAME-$DATETIME.sql.gz $CONTAINER -c "DefaultEndpointsProtocol=https;BlobEndpoint=https://$AZURE_STORAGE_ACCOUNT.blob.core.windows.net/;AccountName=$AZURE_STORAGE_ACCOUNT;AccountKey=$AZURE_STORAGE_ACCESS_KEY"
+    /usr/local/bin/az storage blob upload -f $FILENAME-$DATETIME.sql.gz -c $CONTAINER -n $FILENAME-$DATETIME.sql.gz
 
     if  [ "$?" != "0" ]; then
         exit 1
