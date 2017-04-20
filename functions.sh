@@ -16,16 +16,16 @@ fi
 
 make_backup () {
 
-    export FILENAME={{FILENAME}}
-    export CONTAINER={{CONTAINER}}
-    export MYSQL_HOST={{MYSQL_HOST}}
-    export MYSQL_PORT={{MYSQL_PORT}}
-    export DB_USER={{DB_USER}}
-    export DB_PASSWORD={{DB_PASSWORD}}
-    export DB_NAME={{DB_NAME}}
-    export DEBUG={{DEBUG}}
-    export AZURE_STORAGE_ACCOUNT={{AZURE_STORAGE_ACCOUNT}}
-    export AZURE_STORAGE_ACCESS_KEY={{AZURE_STORAGE_ACCESS_KEY}}
+    #export FILENAME={{FILENAME}}
+    #export CONTAINER={{CONTAINER}}
+    #export MYSQL_HOST={{MYSQL_HOST}}
+    #export MYSQL_PORT={{MYSQL_PORT}}
+    #export DB_USER={{DB_USER}}
+    #export DB_PASSWORD={{DB_PASSWORD}}
+    #export DB_NAME={{DB_NAME}}
+    #export DEBUG={{DEBUG}}
+    #export AZURE_STORAGE_ACCOUNT={{AZURE_STORAGE_ACCOUNT}}
+    #export AZURE_STORAGE_ACCESS_KEY={{AZURE_STORAGE_ACCESS_KEY}}
 
     if [ "$DEBUG" == "true" ]; then
         echo "######################################"
