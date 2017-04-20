@@ -2,10 +2,9 @@ FROM azuresdk/azure-cli-python
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update -y -q && \
-  apt-get install -y mysql-client-5.7 curl wget && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/*
+RUN apk add --update \
+    mysql-client \
+  && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /backup
 ADD . /backup
