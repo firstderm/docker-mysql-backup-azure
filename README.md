@@ -43,7 +43,7 @@ docker run -rm --name mysql-backup \
 -e "AZURE_STORAGE_ACCESS_KEY=ashdgashdgasdsa--dadcdsfsd/sdfd--"
 -e "CONTAINER=sql-backup" \
 -e "MYSQL_HOST=test.mysql.com" \
-fernandoneto/docker-mysql-backup-azure:latest
+amondnet/docker-mysql-backup-azure:latest
 
 ```
 
@@ -53,5 +53,5 @@ container will stop.
 ### Building image
 
 ```bash
-docker build -t fernandoneto/docker-mysql-backup-azure .
+docker build -t amondnet/docker-mysql-backup-azure .
 ```
