@@ -6,7 +6,7 @@ if [ "$BACKUP_WINDOW" == "" ]; then
 
 fi
 
-if  [ "$ONE_SHOOT" == "true" ]; then
+if  [ "$ONE_SHOT" == "true" ]; then
 
     . /backup/functions.sh;
     exit 0
