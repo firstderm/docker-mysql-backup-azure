@@ -3,7 +3,7 @@ FROM azuresdk/azure-cli-python
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apk add --update \
-    mysql-client \
+  mysql-client bc \
   && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /backup

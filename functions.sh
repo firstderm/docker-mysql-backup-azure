@@ -15,7 +15,7 @@ if [ "$NO_PASSWORD" == "" ]; then
 fi
 
 make_backup () {
-
+    timing1=$(date +%s.%N)
     #export FILENAME={{FILENAME}}
     #export CONTAINER={{CONTAINER}}
     #export MYSQL_HOST={{MYSQL_HOST}}
@@ -41,6 +41,8 @@ make_backup () {
         echo "######################################"
     fi
 
+    echo "Starting backup"
+
     if [ "$NO_PASSWORD" == "true" ]; then
 
         mysqldump -h $MYSQL_HOST -P $MYSQL_PORT -u $DB_USER --hex-blob --routines --triggers --ssl $DB_NAME > $FILENAME-$DATETIME.sql;
@@ -65,7 +67,21 @@ make_backup () {
         exit 1
     fi
     # Remove file to save space
+
+    ls -alh $FILENAME-$DATETIME.sql.gz
+
     rm -fR *.sql.gz
+
+    timing2=$(date +%s.%N)
+    dt=$(echo "$timing2 - $timing1" | bc)
+    dd=$(echo "$dt/86400" | bc)
+    dt2=$(echo "$dt-86400*$dd" | bc)
+    dh=$(echo "$dt2/3600" | bc)
+    dt3=$(echo "$dt2-3600*$dh" | bc)
+    dm=$(echo "$dt3/60" | bc)
+    ds=$(echo "$dt3-60*$dm" | bc)
+
+    printf "Total runtime: %d:%02d:%02d:%02.4f\n" $dd $dh $dm $ds
 
 }
 
