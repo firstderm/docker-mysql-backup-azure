@@ -7,7 +7,7 @@ RUN apk add --update \
   && rm -rf /var/cache/apk/*
 
 RUN mkdir -p /backup
-ADD . /backup
+COPY ./*.sh /backup/
 RUN chmod 0755 /backup/*
 
 ENTRYPOINT ["/backup/backup.sh"]
