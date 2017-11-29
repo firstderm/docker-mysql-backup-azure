@@ -23,11 +23,13 @@ else
     sed 's,{{AZURE_STORAGE_ACCESS_KEY}},'"${AZURE_STORAGE_ACCESS_KEY}"',g' -i /backup/functions.sh
     sed 's,{{FILENAME}},'"${FILENAME}"',g' -i /backup/functions.sh
     sed 's,{{CONTAINER}},'"${CONTAINER}"',g' -i /backup/functions.sh
+    sed 's,#export,'"export"',g' -i /backup/functions.sh
     touch /var/log/cron.log;
-    echo "$BACKUP_WINDOW /backup/variable.sh & /backup/functions.sh >> /var/log/cron.log 2>&1" >> job;
+    echo "$BACKUP_WINDOW /backup/functions.sh >> /var/log/cron.log 2>&1" >> job;
     echo "" >> job
+    echo "Starting crond"
+    tail -f /var/log/cron.log &
     crontab job; crond -l 2 -f;
-    #tail -f /var/log/cron.log;
     exit $?
 
 fi
