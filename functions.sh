@@ -43,11 +43,11 @@ make_backup () {
 
     if [ "$NO_PASSWORD" == "true" ]; then
 
-        mysqldump -h $MYSQL_HOST -P $MYSQL_PORT -u $DB_USER $DB_NAME > $FILENAME-$DATETIME.sql;
+        mysqldump -h $MYSQL_HOST -P $MYSQL_PORT -u $DB_USER --hex-blob --routines --triggers --ssl $DB_NAME > $FILENAME-$DATETIME.sql;
 
     else
 
-        mysqldump -h $MYSQL_HOST -P $MYSQL_PORT -u $DB_USER --password=$DB_PASSWORD $DB_NAME > $FILENAME-$DATETIME.sql;
+        mysqldump -h $MYSQL_HOST -P $MYSQL_PORT -u $DB_USER --password=$DB_PASSWORD --hex-blob --routines --triggers --ssl $DB_NAME > $FILENAME-$DATETIME.sql;
 
     fi
 
